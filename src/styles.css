@@ -376,3 +376,25 @@ body {
     width: 100%;
   }
 }
+/* Example styles in a CSS file, e.g., Navbar.css */
+
+.navbar {
+  background-color: #333;
+  padding: 10px;
+}
+
+.navbar-brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-item {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.navbar-item:hover {
+  text-decoration: underline;
+}

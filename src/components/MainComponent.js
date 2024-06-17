@@ -6,7 +6,7 @@ import Forecast from "./Forecast";
 import "../styles.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-function MainComponent() {
+function MainComponent({ setFavorites }) {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({
     loading: true,
@@ -48,6 +48,20 @@ function MainComponent() {
       setWeather({ ...weather, data: {}, loading: false, error: true });
       console.log("error", error);
     }
+  };
+
+  const addToFavorites = () => {
+    if (!weather.data || !weather.data.main) {
+      return; // Check if weather data is available
+    }
+
+    const newFavorite = {
+      id: weather.data.id,
+      name: weather.data.name,
+      weather: weather.data.weather
+    };
+
+    setFavorites(prevFavorites => [...prevFavorites, newFavorite]);
   };
 
   useEffect(() => {
@@ -98,7 +112,8 @@ function MainComponent() {
       {/* Display weather data */}
       {weather && weather.data && weather.data.main && (
         <Forecast weather={weather} toDate={toDate} />
-      )}
+      )}<br></br><br></br>
+      <button onClick={addToFavorites}>Add City to Favorites</button>
     </div>
   );
 }

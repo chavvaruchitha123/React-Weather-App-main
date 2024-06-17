@@ -1,23 +1,24 @@
 import React from "react";
 
-function FavoriteCities({ favoriteCities, removeFavoriteCity }) {
+const FavoriteCities = ({ favorites, removeFromFavorites }) => {
+  const handleRemove = (cityId) => {
+    removeFromFavorites(cityId);
+  };
+
   return (
-    <div className="favorite-cities">
+    <div className="favorites">
       <h2>Favorite Cities</h2>
-      {favoriteCities.length === 0 ? (
-        <p>No favorite cities added yet.</p>
-      ) : (
-        <ul>
-          {favoriteCities.map(city => (
-            <li key={city.name}>
-              {city.name} ({city.country})
-              <button onClick={() => removeFavoriteCity(city)}>Remove</button>
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul>
+        {favorites.map((city) => (
+          <li key={city.id}>
+            {city.name} - {city.weather[0].main}
+            <span></span>
+            <button onClick={() => handleRemove(city.id)}>Remove</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
-}
-export default FavoriteCities;
+};
 
+export default FavoriteCities;
