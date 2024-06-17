@@ -53,7 +53,7 @@ function MainComponent() {
   useEffect(() => {
     const fetchData = async () => {
       const apiKey = "12a15b4f2a34aee821f0f79cebc08698";
-      const defaultCity = "Rabat"; // Default city to fetch data on initial load
+      const defaultCity = "Hyderabad"; // Default city to fetch data on initial load
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${defaultCity}&units=metric&APPID=${apiKey}`;
 
       try {
